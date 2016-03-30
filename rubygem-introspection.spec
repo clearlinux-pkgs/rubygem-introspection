@@ -4,7 +4,7 @@
 #
 Name     : rubygem-introspection
 Version  : 0.0.3
-Release  : 4
+Release  : 5
 URL      : https://rubygems.org/downloads/introspection-0.0.3.gem
 Source0  : https://rubygems.org/downloads/introspection-0.0.3.gem
 Summary  : No detailed summary available
@@ -28,17 +28,17 @@ gem spec %{SOURCE0} -l --ruby > rubygem-introspection.gemspec
 gem build rubygem-introspection.gemspec
 
 %install
-gem_dir=$(ruby -e'puts Gem.default_dir')
+%global gem_dir $(ruby -e'puts Gem.default_dir')
 gem install -V \
 --local \
 --force \
---install-dir .${gem_dir} \
+--install-dir .%{gem_dir} \
 --bindir .%{_bindir} \
 introspection-0.0.3.gem
 
-mkdir -p %{buildroot}${gem_dir}
-cp -pa .${gem_dir}/* \
-%{buildroot}${gem_dir}
+mkdir -p %{buildroot}%{gem_dir}
+cp -pa .%{gem_dir}/* \
+%{buildroot}%{gem_dir}
 
 if [ -d .%{_bindir} ]; then
 mkdir -p %{buildroot}%{_bindir}
@@ -46,64 +46,32 @@ cp -pa .%{_bindir}/* \
 %{buildroot}%{_bindir}/
 fi
 
+
 %files
 %defattr(-,root,root,-)
-/usr/lib64/ruby/gems/2.2.0/cache/introspection-0.0.3.gem
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Assertions/assert_snapshot_changed-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Assertions/assert_snapshot_unchanged-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Assertions/cdesc-Assertions.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Method/%3d%3d-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Method/cdesc-Method.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Method/eql%3f-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Method/hash-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Method/inspect-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Method/name-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Method/new-c.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Method/visibility-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/NullMetaclass/ancestors-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/NullMetaclass/cdesc-NullMetaclass.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/NullReceiver/__metaclass__-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/NullReceiver/cdesc-NullReceiver.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/NullReceiver/receivers-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/cdesc-Receivers.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/local_receivers-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/receivers-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Receivers/superklass-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Snapshot/cdesc-Snapshot.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Snapshot/methods-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/Snapshot/new-c.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/cdesc-Introspection.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/changed%3f-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Introspection/diff-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Object/cdesc-Object.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/String/bar-c.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/String/cdesc-String.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/String/foo-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Symbol/cdesc-Symbol.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/Symbol/to_proc-i.ri
-/usr/lib64/ruby/gems/2.2.0/doc/introspection-0.0.3/ri/cache.ri
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/.gitignore
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/.travis.yml
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/COPYING.txt
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/Gemfile
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/README.md
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/Rakefile
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/introspection.gemspec
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection/assertions.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection/change_detector.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection/core_ext.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection/core_ext/symbol.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection/method.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection/receivers.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection/snapshot.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/lib/introspection/version.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/samples/class.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/samples/instance.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/samples/module.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/test/class_snapshot_test.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/test/instance_snapshot_test.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/test/module_snapshot_test.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/test/snapshot_test.rb
-/usr/lib64/ruby/gems/2.2.0/gems/introspection-0.0.3/test/test_helper.rb
-/usr/lib64/ruby/gems/2.2.0/specifications/introspection-0.0.3.gemspec
+/usr/lib64/ruby/gems/2.3.0/cache/introspection-0.0.3.gem
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/.gitignore
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/.travis.yml
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/COPYING.txt
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/Gemfile
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/README.md
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/Rakefile
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/introspection.gemspec
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection/assertions.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection/change_detector.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection/core_ext.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection/core_ext/symbol.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection/method.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection/receivers.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection/snapshot.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/lib/introspection/version.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/samples/class.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/samples/instance.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/samples/module.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/test/class_snapshot_test.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/test/instance_snapshot_test.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/test/module_snapshot_test.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/test/snapshot_test.rb
+/usr/lib64/ruby/gems/2.3.0/gems/introspection-0.0.3/test/test_helper.rb
+/usr/lib64/ruby/gems/2.3.0/specifications/introspection-0.0.3.gemspec
